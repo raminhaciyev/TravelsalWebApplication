@@ -18,5 +18,12 @@ namespace EntityLayer.Concrete
         public string Description { get; set; }
         public int Capacity { get; set; }
         public bool Status { get; set; }
+        public string DImageLarge { get; set; }
+        public string DTitle { get; set; }
+        public string DExplanation1 { get; set; }
+        public string DExplanation2 { get; set; }
+        public string DExplanation3 { get; set; }
+        public string DImage1 { get; set; }
+        public string DImage2 { get; set; }
     }
 }

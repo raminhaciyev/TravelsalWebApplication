@@ -21,7 +21,8 @@ namespace TravelsalWebApplication.Controllers
         [HttpGet]
         public IActionResult DestinationDetails(int id)
         {
-            return View();
+            var values = destinationManager.TGetById(id);
+            return View(values);
         }
 
         [HttpPost]

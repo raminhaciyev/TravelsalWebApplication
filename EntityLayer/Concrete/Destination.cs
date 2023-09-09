@@ -25,5 +25,6 @@ namespace EntityLayer.Concrete
         public string DExplanation3 { get; set; }
         public string DImage1 { get; set; }
         public string DImage2 { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

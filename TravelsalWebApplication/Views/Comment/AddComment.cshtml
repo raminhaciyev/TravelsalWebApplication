@@ -3,16 +3,16 @@
     <p class="mb-4">
         Your email address will not be published. Required fields are marked *
     </p>
-    <form action="#" method="post">
+    <form  method="post" asp-action="AddComment" asp-controller="Comment">
 
         <div class="form-group">
-            <textarea name="Comment" class="form-control" placeholder="Your Comment*" required=""
+            <textarea name="CommentContent" class="form-control" placeholder="Your Comment*" required=""
                       spellcheck="false"></textarea>
         </div>
         <div class="input-grids row">
 
             <div class="form-group col-lg-6">
-                <input type="text" name="Name" class="form-control" placeholder="Your Name*"
+                <input type="text" name="CommentUser" class="form-control" placeholder="Your Name*"
                        required="">
             </div>
             <div class="form-group col-lg-6">

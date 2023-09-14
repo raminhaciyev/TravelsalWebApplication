@@ -18,7 +18,7 @@ namespace TravelsalWebApplication.Models
         public string Mail { get; set; }
 
         [Required(ErrorMessage = "Please fill your phone number")]
-        public string Phone { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Please fill your password")]
         public string Password { get; set; }

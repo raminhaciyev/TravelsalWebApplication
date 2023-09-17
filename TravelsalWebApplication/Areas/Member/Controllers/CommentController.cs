@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TravelsalWebApplication.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AllowAnonymous]
+    [Route("Member/[controller]/[action]")]
     public class CommentController : Controller
     {
         public IActionResult Index()

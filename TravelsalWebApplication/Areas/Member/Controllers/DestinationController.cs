@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace TravelsalWebApplication.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AllowAnonymous]
-    public class DestinationContrroller : Controller
+    [Route("Member/[controller]/[action]")]
+    public class DestinationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
         public IActionResult Index()

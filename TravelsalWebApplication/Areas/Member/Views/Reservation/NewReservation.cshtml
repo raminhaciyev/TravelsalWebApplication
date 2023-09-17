@@ -1,6 +1,6 @@
 ﻿@model EntityLayer.Concrete.Reservation
 @{
-    ViewData["Title"] = "NewReservaion";
+    ViewData["Title"] = "NewReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
@@ -12,14 +12,13 @@
                     <h6 class="mb-0">Reservation</h6>
                 </div>
                 <div class="card-body pt-4 p-3">
-
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
                                 <h6 class="mb-3 text-sm">Book your new reservation</h6>
                                 <br />
                                 @Html.Label("Destination")
-                                @Html.DropDownListFor(x => x.Destinattion, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                                @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                                 <br />
                                 @Html.Label("Number of participants")
                                 <input type="text" asp-for="PersonCount" class="form-control" />
@@ -30,15 +29,8 @@
                                 @Html.Label("Add your offers/complaints")
                                 @Html.TextAreaFor(x => x.Descriptiion, new { @class = "form-control" })
                             </div>
-
-
                         </li>
-
-
-
-
                     </ul>
-
                     <button class="btn btn-primary btn-sm mb-0">Book Now</button>
                 </div>
             </div>

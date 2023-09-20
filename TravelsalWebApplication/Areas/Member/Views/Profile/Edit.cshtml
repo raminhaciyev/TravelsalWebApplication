@@ -13,7 +13,6 @@
                     <h6 class="mb-0">Main details</h6>
                 </div>
                 <div class="card-body pt-4 p-3">
-
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
@@ -28,20 +27,11 @@
                                 <br />
                                 @Html.Label("Gender")
                                 <input type="text" asp-for="gender" class="form-control" /><br />
-                                @Html.Label("Password")
-                                <input type="password" asp-for="password" class="form-control" /><br />
-                                @Html.Label("Confirm Password")
-                                <input type="password" asp-for="confirmpassword" class="form-control" />
+
                             </div>
 
                         </li>
-
-
-
-
                     </ul>
-
-
                 </div>
             </div>
         </div>
@@ -52,7 +42,11 @@
                         <div class="col-md-6">
                             <h6 class="mb-0">Contact details</h6>
                         </div>
-
+                        <div class="col-md-6 d-flex justify-content-end align-items-center">
+                            <a href="/Member/Profile/updatePassword/">
+                                <i class="fas fa-user-secret text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Change the password"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body pt-4 p-3">
@@ -71,6 +65,8 @@
                     <br />
                     <button class="btn btn-primary btn-sm mb-0">Save</button>
                     <a href="/Member/Profile/Index/" class="btn btn-outline-danger btn-sm mb-0">Cancel</a>
+
+                    
                     
                 </div>
             </div>

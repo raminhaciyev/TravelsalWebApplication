@@ -20,12 +20,17 @@ namespace TravelsalWebApplication.Areas.Member.Controllers
         {
             _userManager = userManager;
         }
-
+       
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.userName = values.Name + " " + values.Surname;
+            ViewBag.userImage = values.ImageUrl;
+            ViewBag.userNumber = values.PhoneNumber;
+            ViewBag.userMail = values.Email;
+            ViewBag.userGender = values.Gender;
             UserEditViewModel userEditViewModel = new UserEditViewModel();
             userEditViewModel.name = values.Name;
             userEditViewModel.surname = values.Surname;
@@ -68,13 +73,43 @@ namespace TravelsalWebApplication.Areas.Member.Controllers
             user.Gender = p.gender;
             user.Email = p.mail;
             user.PhoneNumber = p.phone;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.password);
+            
             var result = await _userManager.UpdateAsync(user);
 
             if (result.Succeeded)
             {
-                return RedirectToAction("SignIn", "Login");
+                return RedirectToAction("Index");
             }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(UserEditViewModel p)
+        {
+            if (p.password == p.confirmpassword)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.password);
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("SignIn", "Login");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
+           
             return View();
         }
     }

@@ -1,0 +1,150 @@
+﻿@model EntityLayer.Concrete.Destination
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Edit Destination</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+                    @Html.HiddenFor(x => x.DestinationID)
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="City"
+                               asp-for="City"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Day Night"
+                               asp-for="DayNight"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Capacity"
+                               asp-for="Capacity"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <span class="input-group-text">$</span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Price"
+                               asp-for="Price" />
+                        <span class="input-group-text">.00</span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Image"
+                               asp-for="Image"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Description"
+                               asp-for="Description"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DExplanation1"
+                               asp-for="DExplanation1"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Edit Destination</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DExplanation2"
+                               asp-for="DExplanation2"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DExplanation3"
+                               asp-for="DExplanation3"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DImage1"
+                               asp-for="DImage1"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DImage2"
+                               asp-for="DImage2"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DImageLarge"
+                               asp-for="DImageLarge"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="DTitle"
+                               asp-for="DTitle"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+                    <button class="btn btn-danger btn-buy-now">
+                        Add
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+

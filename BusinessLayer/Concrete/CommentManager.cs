@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Comment TGetById(int id)
         {
-            throw new NotImplementedException();
+          return  _commentDal.GetById(id);
         }
 
         public List<Comment> TListGet()

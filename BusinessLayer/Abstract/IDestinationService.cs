@@ -10,5 +10,6 @@ namespace BusinessLayer.Abstract
     public interface IDestinationService : IGenericService<Destination>
     {
         List<Destination> TListGetStatusTrue();
+        void TChangeStatus(Destination p);
     }
 }

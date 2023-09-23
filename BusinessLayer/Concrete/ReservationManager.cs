@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public Reservation TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _reservationDal.GetById(id);
         }
 
         public List<Reservation> TListGet()

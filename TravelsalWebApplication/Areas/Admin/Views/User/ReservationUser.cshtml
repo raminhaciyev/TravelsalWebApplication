@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model  List<Reservation>
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="card">
+    <h5 class="card-header">List of Destinations</h5>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Fullname</th>
+                        <th>Destination</th>
+                        <th>Count</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        @{count = count + 1;}
+                        <td>@count</td>
+                        <td>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>##</strong>
+
+                        </td>
+                        <td>#</td>
+                        <td>@item.PersonCount</td>
+                        <td>@(((DateTime)item.ReservationDate).ToString("dd-MMM-yyyy"))</td>
+                        <td>@item.Destination</td>
+                        @if (item.Status == "Approved")
+                        {
+                            <td><a class="badge bg-label-success me-1">Approved</a></td>
+                        }
+                        else if (item.Status == "Denied")
+                        {
+                            <td><a class="badge bg-label-danger me-1">Denied</a></td>
+                        }
+                        else if (item.Status == "In progress")
+                        {
+                            <td><a class="badge bg-label-secondary me-1">In progress</a></td>
+                        }
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

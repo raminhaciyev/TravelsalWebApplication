@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -31,5 +32,12 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
             _commentService.TDelete(values);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(int id)
+        {
+            var values = _commentService.TGetById(id);
+            return View(values);
+        }
+
     }
 }

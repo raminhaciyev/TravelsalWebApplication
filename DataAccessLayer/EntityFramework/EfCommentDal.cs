@@ -13,6 +13,7 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
+     
         public List<Comment> GetListCommentByDestination()
         {
             using(var c= new Context ())
@@ -21,5 +22,6 @@ namespace DataAccessLayer.EntityFramework
             }
            
         }
+
     }
 }

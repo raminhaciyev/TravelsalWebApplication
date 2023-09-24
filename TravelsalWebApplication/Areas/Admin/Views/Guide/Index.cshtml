@@ -42,11 +42,11 @@
                             <td>@item.Description.Substring(0, 9) ...</td>
                             @if (item.Status == true)
                             {
-                                <td><a href="" class="badge bg-label-success me-1">Active</a></td>
+                                <td><a href="/Admin/Guide/ChangeStatus/@item.GuideID" class="badge bg-label-success me-1">Active</a></td>
                             }
                             else
                             {
-                                <td><a href="" class="badge bg-label-danger me-1">False</a></td>
+                                <td><a href="/Admin/Guide/ChangeStatus/@item.GuideID" class="badge bg-label-danger me-1">False</a></td>
                             }
                             <td>
                                 <div class="dropdown">

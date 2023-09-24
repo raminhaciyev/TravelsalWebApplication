@@ -1,6 +1,4 @@
-﻿
-using EntityLayer.Concrete;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    
-    public interface IGuideService : IGenericService<Guide>
+    public interface IExcelService
     {
-        void TChangeStatus(Guide p);
+        byte[] ExcelList<T>(List<T> t) where T : class;
     }
 }

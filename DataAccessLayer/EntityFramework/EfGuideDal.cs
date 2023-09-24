@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;
@@ -11,5 +12,19 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfGuideDal : GenericRepository<Guide>, IGuideDal
     {
+        public void ChangeStatus(Guide p)
+        {
+            using var c = new Context();
+            if (p.Status == true)
+            {
+                p.Status = false;
+            }
+            else
+            {
+                p.Status = true;
+            }
+            c.Update(p);
+            c.SaveChanges();
+        }
     }
 }

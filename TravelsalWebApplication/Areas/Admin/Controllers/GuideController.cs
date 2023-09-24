@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace TravelsalWebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/[controller]/[action]/{id?}")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
@@ -64,6 +65,13 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         public IActionResult EditGuide(Guide p)
         {
             _guideService.TUpdate(p);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ChangeStatus(int id)
+        {
+            var values = _guideService.TGetById(id);
+            _guideService.TChangeStatus(values);
             return RedirectToAction("Index");
         }
     }

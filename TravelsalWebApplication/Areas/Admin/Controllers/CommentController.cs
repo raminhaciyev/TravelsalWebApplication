@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace TravelsalWebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/[controller]/[action]/{id?}")]
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;

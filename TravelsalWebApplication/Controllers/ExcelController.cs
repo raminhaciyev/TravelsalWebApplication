@@ -1,4 +1,5 @@
-﻿using ClosedXML.Excel;
+﻿using BusinessLayer.Abstract;
+using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
@@ -13,30 +14,21 @@ namespace TravelsalWebApplication.Controllers
 {
     public class ExcelController : Controller
     {
+        private readonly IExcelService _excelService;
+
+        public ExcelController(IExcelService excelService)
+        {
+            _excelService = excelService;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult StaticExcel()
+        public IActionResult DynamicExcel()
         {
-            ExcelPackage excel = new ExcelPackage();
-            var workSheet = excel.Workbook.Worksheets.Add("Page1");
-            workSheet.Cells[1, 1].Value = "Destination";
-            workSheet.Cells[1, 2].Value = "Guide";
-            workSheet.Cells[1, 3].Value = "Capacity";
-
-            workSheet.Cells[2, 1].Value = "Georgia";
-            workSheet.Cells[2, 2].Value = "Ivanna";
-            workSheet.Cells[2, 3].Value = "5";
-
-            workSheet.Cells[3, 1].Value = "Azerbaijan";
-            workSheet.Cells[3, 2].Value = "Peterson";
-            workSheet.Cells[3, 3].Value = "10";
-
-            var bytes = excel.GetAsByteArray();
-
-            return File(bytes,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","file1.xlsx");
+            return File(_excelService.ExcelList(DestinationList()),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","DestinationList1.xlsx");
         }
 
         public List<DestinationModel> DestinationList()

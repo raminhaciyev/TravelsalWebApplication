@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _guideDal.Insert(t);
         }
 
+        public void TChangeStatus(Guide p)
+        {
+            _guideDal.ChangeStatus(p);
+        }
+
         public void TDelete(Guide t)
         {
             _guideDal.Delete(t);

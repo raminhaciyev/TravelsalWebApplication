@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -33,8 +35,22 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddGuide(Guide p)
         {
-            _guideService.TAdd(p);
-            return RedirectToAction("Index", "Guide");
+            GuideValidator validationRules = new GuideValidator();
+            ValidationResult result = validationRules.Validate(p);
+            if (result.IsValid)
+            {
+                _guideService.TAdd(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                }
+                return View();
+            }
+            
         }
 
         [HttpGet]
@@ -48,7 +64,7 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         public IActionResult EditGuide(Guide p)
         {
             _guideService.TUpdate(p);
-            return RedirectToAction("Index","Guide");
+            return RedirectToAction("Index");
         }
     }
 }

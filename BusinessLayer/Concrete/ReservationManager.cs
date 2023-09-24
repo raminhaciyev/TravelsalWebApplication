@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Reservation t)
         {
-            throw new NotImplementedException();
+            _reservationDal.Delete(t);
         }
 
         public Reservation TGetById(int id)
@@ -45,7 +45,7 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Reservation t)
         {
-            throw new NotImplementedException();
+            _reservationDal.Update(t);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         {
             var values = _appUserService.TGetById(id);
             _appUserService.TDelete(values);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","User");
         }
 
 
@@ -56,7 +56,7 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
 
         public IActionResult ReservationUser(int id)
         {
-          var values=  _reservationService.TGetById(id);
+          var values=  _reservationService.GetListReservationByDestination(id);
             return View(values);
         }
     }

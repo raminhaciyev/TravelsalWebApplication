@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<AppUser>
+@model List<Guide> 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,10 +15,8 @@
                     <tr>
                         <th>#</th>
                         <th>Fullname</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Comment</th>
-                        <th>Tour History</th>
+                        <th>Description</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -35,16 +33,21 @@
                                         data-bs-placement="top"
                                         class="avatar avatar-xs pull-up"
                                         title="">
-                                        <img src="@item.ImageUrl" alt="Avatar" class="rounded-circle" />
+                                        <img src="@item.Image" alt="Avatar" class="rounded-circle" />
                                     </li>
                                 </ul>
-                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Name  @item.Surname</strong>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Name</strong>
 
                             </td>
-                            <td>@item.UserName</td>
-                            <td>@item.Email</td>
-                            <td><a href="/Admin/User/CommentUser/@item.Id" class="badge bg-label-primary me-1">Comments</a></td>
-                            <td><a href="/Admin/User/ReservationUser/@item.Id" class="badge bg-label-secondary me-1">Tours</a></td>
+                            <td>@item.Description.Substring(0, 9) ...</td>
+                            @if (item.Status == true)
+                            {
+                                <td><a href="" class="badge bg-label-success me-1">Active</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="" class="badge bg-label-danger me-1">False</a></td>
+                            }
                             <td>
                                 <div class="dropdown">
                                     <button type="button"
@@ -53,8 +56,8 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/Admin/User/EditUser/@item.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="/Admin/User/DeleteUser/@item.Id" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</a>
+                                        <a class="dropdown-item" href="/Admin/User/EditUser/@item.GuideID"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="/Admin/User/DeleteUser/@item.GuideID" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
@@ -63,15 +66,12 @@
 
                 </tbody>
             </table>
+            <br />
+            <div>
+                <a href="/Admin/Guide/AddGuide"
+                   class="btn btn-danger btn-buy-now">Add New</a>
+            </div>
         </div>
     </div>
 </div>
-
-<script>
-    function clicked(e) {
-        if (!confirm('Are you sure?')) {
-            e.preventDefault();
-        }
-    }
-</script>
 

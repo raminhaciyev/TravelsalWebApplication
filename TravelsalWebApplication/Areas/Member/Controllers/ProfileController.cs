@@ -73,44 +73,16 @@ namespace TravelsalWebApplication.Areas.Member.Controllers
             user.Gender = p.gender;
             user.Email = p.mail;
             user.PhoneNumber = p.phone;
-            
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.password);
             var result = await _userManager.UpdateAsync(user);
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("SignIn", "Login");
             }
             return View();
         }
 
-        [HttpGet]
-        public IActionResult UpdatePassword()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UpdatePassword(UserEditViewModel p)
-        {
-            if (p.password == p.confirmpassword)
-            {
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.password);
-                var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("SignIn", "Login");
-                }
-                else
-                {
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
-                }
-            }
-           
-            return View();
-        }
+        
     }
 }

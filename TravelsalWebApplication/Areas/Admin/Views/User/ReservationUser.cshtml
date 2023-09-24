@@ -31,13 +31,13 @@
                         @{count = count + 1;}
                         <td>@count</td>
                         <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>##</strong>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>#</strong>
 
                         </td>
-                        <td>#</td>
+                        <td>@item.Destination.City</td>
                         <td>@item.PersonCount</td>
                         <td>@(((DateTime)item.ReservationDate).ToString("dd-MMM-yyyy"))</td>
-                        <td>@item.Destination</td>
+                        <td>@item.Descriptiion</td>
                         @if (item.Status == "Approved")
                         {
                             <td><a class="badge bg-label-success me-1">Approved</a></td>

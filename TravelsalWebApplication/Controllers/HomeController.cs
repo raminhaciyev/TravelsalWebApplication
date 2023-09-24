@@ -28,6 +28,14 @@ namespace TravelsalWebApplication.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            DateTime d = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            _logger.LogInformation("Test is called "+ d);
+            _logger.LogError("Test is called");
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

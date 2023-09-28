@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<h1>CityList Ajax</h1>
+<br />
+
+<button type="button" id="btngetList" class="btn btn-outline-info">City List</button>
+
+<button type="button" id="btnaddCity" class="btn btn-outline-success">City Add</button>
+
+
+<div id="citylist">
+    The list of the city will appear
+</div>
+<br />
+<div>
+    <input type="text" id="txtcity" placeholder="City" class="form-control" />
+    <br />
+    <input type="text" id="txtday" placeholder="Day and Night" class="form-control" />
+    <br />
+    <input type="text" id="txtprice" placeholder="Price" class="form-control" />
+    <br />
+    <input type="text" id="txtcapacity" placeholder="Capacity" class="form-control" />
+</div>
+
+<script>
+    $("#btngetList").click(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Admin/City/CityList/",
+            success: function (func) {
+                let w = jQuery.parseJSON(func);
+                console.log(w);
+                let tablehtml = "<table class=table table-bordered> <tr><th>City</th><th>Day-Night</th><th>Price</th></tr>";
+                $.each(w, (index, value) => {
+                    tablehtml += `<tr><td>${value.City}</td><td>${value.DayNight}</td><td>${value.Price}</td></tr>`
+                });
+                tablehtml += "</table>";
+                $("#citylist").html(tablehtml);
+            }
+        });
+    });
+
+    $("#btnaddCity").click(function () {
+        let cityvalues = {
+            City: $("#txtcity").val(),
+            DayNight: $("#txtday").val(),
+            Price: $("#txtprice").val(),
+            Capacity: $("#txtcapacity").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/AddCity/",
+            data: cityvalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("City was added successfully");
+            }
+        });
+    });
+</script>
+

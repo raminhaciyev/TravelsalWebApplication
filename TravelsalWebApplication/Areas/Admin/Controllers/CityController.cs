@@ -39,5 +39,19 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
             var values = JsonConvert.SerializeObject(p);
             return Json(values);
         }
+
+        public IActionResult DeleteCity(int id)
+        {
+            var values = _destinationService.TGetById(id);
+            _destinationService.TDelete(values);
+            return NoContent();
+        }
+
+        public IActionResult UpdateCity(Destination p)
+        {
+            _destinationService.TUpdate(p);
+            var v = JsonConvert.SerializeObject(p);
+            return Json(v);
+        }
     }
 }

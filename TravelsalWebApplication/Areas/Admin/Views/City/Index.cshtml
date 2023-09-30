@@ -9,8 +9,9 @@
 <br />
 
 <button type="button" id="btngetList" class="btn btn-outline-info">City List</button>
-
 <button type="button" id="btnaddCity" class="btn btn-outline-success">City Add</button>
+<button type="button" id="btndeleteCity" class="btn btn-outline-danger">City Delete</button>
+<button type="button" id="btnupdateCity" class="btn btn-outline-secondary">City Update</button>
 
 
 <div id="citylist">
@@ -18,6 +19,7 @@
 </div>
 <br />
 <div>
+    @Html.Label("Add City")
     <input type="text" id="txtcity" placeholder="City" class="form-control" />
     <br />
     <input type="text" id="txtday" placeholder="Day and Night" class="form-control" />
@@ -25,6 +27,20 @@
     <input type="text" id="txtprice" placeholder="Price" class="form-control" />
     <br />
     <input type="text" id="txtcapacity" placeholder="Capacity" class="form-control" />
+</div>
+<br />
+<div>
+    @Html.Label("Delete City")
+    <input type="text" id="txtcityid" placeholder="ID for delete" class="form-control" />
+</div>
+<br />
+<div>
+    @Html.Label("Update City")
+    <input type="text" id="txtcityupdateid" placeholder="ID" class="form-control" />
+    <br />
+    <input type="text" id="txtcityname" placeholder="City" class="form-control" />
+    <br />
+    <input type="text" id="txtcityday" placeholder="DayNight" class="form-control" />
 </div>
 
 <script>
@@ -65,5 +81,37 @@
             }
         });
     });
+
+    $("#btndeleteCity").click(x => {
+        let id = $("#txtcityid").val();
+        $.ajax({
+            url: "/Admin/City/DeleteCity/" + id,
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (func2) {
+                alert("city has been deleted");
+            }
+        });
+    });
+
+    $("#btnupdateCity").click(function () {
+        let values = {
+            DestinationID: $("#txtcityupdateid").val(),
+            City: $("#txtcityname").val(),
+            DayNight: $("#txtcityday").val()
+
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/UpdateCity/",
+            data: values,
+            success: function (func3){
+                alert("city has been updated");
+        }
+        });
+    });
+
 </script>
 

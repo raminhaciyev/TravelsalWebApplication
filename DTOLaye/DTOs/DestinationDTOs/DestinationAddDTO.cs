@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOLaye.DTOs.DestinationDTOs
 {
-    public class DestinationAddDTOs
+    public class DestinationAddDTO
     {
         public string City { get; set; }
         public string DayNight { get; set; }

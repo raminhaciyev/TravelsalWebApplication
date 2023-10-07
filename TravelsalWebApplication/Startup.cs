@@ -36,6 +36,8 @@ namespace TravelsalWebApplication
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
+            services.AddHttpClient();
+
             services.ContainerDependencies();
             services.AddAutoMapper(typeof(Startup));
 

@@ -1,0 +1,57 @@
+﻿@model List<GetAllGuideQueryResult>
+@{  
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h5 class="card-header">List of MediatR Guide</h5>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button"
+                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/Admin/GuideMediatR/GetByIdGuide/@item.GuideID"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="/Admin/GuideMediatR/AddGuide/@item.GuideID" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+        <br />
+        <div>
+            <a href="/Admin/GuideMediatR/AddGuide"
+               class="btn btn-danger btn-buy-now">Add New</a>
+        </div>
+    </div>
+
+</div>
+

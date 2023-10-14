@@ -1,0 +1,39 @@
+﻿@model CreateGuideCommand 
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Add New Guide</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Name"
+                               asp-for="Name"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Description"
+                               asp-for="Description"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-danger btn-buy-now">
+                Add
+            </button>
+        </div>
+    </div>
+</form>
+

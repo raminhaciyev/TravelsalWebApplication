@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DTOLaye.DTOs.AnnouncementDTOs;
 using DTOLaye.DTOs.AppUserDTOs;
+using DTOLaye.DTOs.ContactDTOs;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace TravelsalWebApplication.Mapping.AutoMapperProfile
             CreateMap<AnnouncementListDto, Announcement>().ReverseMap();
 
             CreateMap<AnnouncementUpdateDto, Announcement>().ReverseMap();
+
+            CreateMap<SendMessageDto, ContactMessage>().ReverseMap();
         }
     }
 }

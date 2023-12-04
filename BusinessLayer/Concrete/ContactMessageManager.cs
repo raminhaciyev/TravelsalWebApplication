@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(ContactMessage t)
         {
-            throw new NotImplementedException();
+            _contactMessageDal.Insert(t);
         }
 
         public void TChangeStatus(ContactMessage p)

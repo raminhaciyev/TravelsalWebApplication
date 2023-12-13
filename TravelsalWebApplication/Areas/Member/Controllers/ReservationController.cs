@@ -51,7 +51,7 @@ namespace TravelsalWebApplication.Areas.Member.Controllers
         [HttpPost]
         public IActionResult NewReservation(Reservation p)
         {
-            p.AppUserId = 1;
+            p.AppUserId = 4;
             p.Status = "In progress";
             reservationManager.TAdd(p);
             return RedirectToAction("MyReservationHistory");

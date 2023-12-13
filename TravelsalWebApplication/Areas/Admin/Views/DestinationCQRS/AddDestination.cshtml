@@ -1,0 +1,63 @@
+﻿@using TravelsalWebApplication.CQRS.Commands.DestinationCommands 
+@model CreateDestinationCommand
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Add New Destination</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="City"
+                               asp-for="City"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Day Night"
+                               asp-for="DayNight"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Capacity"
+                               asp-for="Capacity"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <span class="input-group-text">$</span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Price"
+                               asp-for="Price" />
+                        <span class="input-group-text">.00</span>
+                    </div>
+
+
+                </div>
+            </div>
+            <button class="btn btn-danger btn-buy-now">
+                Add
+            </button>
+        </div>
+
+        
+
+    </div>
+</form>
+

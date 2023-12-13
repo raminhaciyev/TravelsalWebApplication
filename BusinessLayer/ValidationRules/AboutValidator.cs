@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-    public class AboutValidator : AbstractValidator<About>
+    public class AbstractValidator : AbstractValidator<About>
     {
-        public AboutValidator()
+        public AbstractValidator()
         {
             RuleFor(x => x.Description).NotEmpty().WithMessage("Fill the gaps..");
             RuleFor(x => x.Title).MinimumLength(50).WithMessage("Use at least 50 characters");

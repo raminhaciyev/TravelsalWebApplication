@@ -1,0 +1,69 @@
+﻿@model VisitorViewModel
+@{
+    ViewData["Title"] = "UpdateVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Edit Visitor Api</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+                    @Html.HiddenFor(x => x.VisitorID)
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Name"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Surname"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Country"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="City"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Mail"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+
+
+
+
+                    <button class="btn btn-danger btn-buy-now">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        
+    </div>
+</form>
+

@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Comment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Edit Destination</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+                    @Html.HiddenFor(x => x.CommentID)
+                    <div class="input-group input-group-merge">
+                        <input type="text" disabled
+                               class="form-control"
+                               asp-for="CommentUser"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <input type="text" disabled
+                               class="form-control"
+                               asp-for="CommentDate"
+                               aria-describedby="basic-addon33" />
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+
+                    <div class="input-group input-group-merge">
+                        <textarea type="text" disabled
+                               class="form-control"
+                               asp-for="CommentContent"
+                               aria-describedby="basic-addon33" ></textarea>
+                        <span class="input-group-text" id="basic-addon33"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+

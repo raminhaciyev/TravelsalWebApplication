@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +11,19 @@ using System.Threading.Tasks;
 namespace TravelsalWebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
- 
+    [Route("Admin/[controller]/[action]/{id?}")]
     public class DestinationController : Controller
     {
-        DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
-            var values = destinationManager.TListGet();
+            var values = _destinationService.TListGet();
             return View(values);
         }
 
@@ -29,22 +36,22 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddDestination(Destination p)
         {
-           destinationManager.TAdd(p);
+            _destinationService.TAdd(p);
             return RedirectToAction("Index");
         }
 
         
         public IActionResult DeleteDestination(int id)
         {
-            var values = destinationManager.TGetById(id);
-            destinationManager.TDelete(values);
+            var values = _destinationService.TGetById(id);
+            _destinationService.TDelete(values);
             return RedirectToAction("Index","Destination", new { area="Admin"});
         }
 
        [HttpGet]
        public IActionResult UpdateDestination(int id)
         {
-            var values = destinationManager.TGetById(id);
+            var values = _destinationService.TGetById(id);
             return View(values);
         }
 
@@ -52,8 +59,16 @@ namespace TravelsalWebApplication.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult UpdateDestination(Destination p)
         {
-            destinationManager.TUpdate(p);
+            _destinationService.TUpdate(p);
             return RedirectToAction("Index", "Destination", new { area = "Admin" });
+        }
+
+        
+        public IActionResult ChangeStatus(int id)
+        {
+            var values = _destinationService.TGetById(id);
+            _destinationService.TChangeStatus(values);
+            return RedirectToAction("Index","Destination",new { @area="Admin"});
         }
     }
 }

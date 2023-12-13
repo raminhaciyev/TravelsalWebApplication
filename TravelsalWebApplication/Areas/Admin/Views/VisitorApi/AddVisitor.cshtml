@@ -1,0 +1,58 @@
+﻿@model VisitorViewModel
+@{
+    ViewData["Title"] = "AddVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-header">Add New Visitor API</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+
+                    <div class="form-group">
+                        @Html.Label("Name")
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Name" />
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Surname")
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Surname" />
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Country")
+                        <input cols="30" rows="5"
+                                  class="form-control"
+                                  asp-for="Country"/>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("City")
+                        <input cols="30" rows="5"
+                                  class="form-control"
+                                  asp-for="City"/>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Mail")
+                        <input cols="30" rows="5"
+                                  class="form-control"
+                                  asp-for="Mail"/>
+                    </div>
+                    <button class="btn btn-danger btn-buy-now">
+                        Add
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+

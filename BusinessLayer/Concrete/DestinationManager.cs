@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _destinationDal.Insert(t);
         }
 
+        public void TChangeStatus(Destination p)
+        {
+            _destinationDal.ChangeStatus(p);
+        }
+
         public void TDelete(Destination t)
         {
             _destinationDal.Delete(t);
